@@ -39,11 +39,11 @@ fn main() {
     }
     
     let duration = start.elapsed();
-    
+    let l = results.iter().len();
     for line in results {
         println!("{}",line);
     }
-    println!("process file took {:?}", duration);
+    println!("process file took {:?} for a total find of {}", duration, l);
    
     
 }
