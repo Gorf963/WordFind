@@ -21,7 +21,20 @@ pub fn brute(max_word_len: usize, word_list: &Vec<String>, search: [[char;SEARCH
                     temp_results.push(format!("East Word: {} found at {} {}",a,i+1,j+1));
                 }
             }
-
+            //South
+            let word = word_create("S".to_owned(),i,j,max_word_len,search);
+            for a in word_list.iter() {
+                if start_with(&word, a ) {
+                    temp_results.push(format!("South Word: {} found at {} {}",a,i+1,j+1));
+                }
+            }
+            //North
+            let word = word_create("N".to_owned(),i,j,max_word_len,search);
+            for a in word_list.iter() {
+                if start_with(&word, a ) {
+                    temp_results.push(format!("North Word: {} found at {} {}",a,i+1,j+1));
+                }
+            }
         }
         
     }
@@ -44,6 +57,22 @@ fn word_create(direct: String, i: usize, j: usize, max_word_len: usize, search: 
             k -=1;
         }
     }
+    if direct == "S" {
+        for k in i..cmp::min(SEARCH_Y-1, i+max_word_len) {
+            word.push(search[k][j]);
+        }
+    }
+    if direct == "N" {
+        let mut adj_i: usize = 0;
+        let mut k: usize = i;
+        if max_word_len < i {adj_i = i-max_word_len;}
+        while k > adj_i {
+            word.push(search[k][j]);
+            k -=1;
+        }
+    }
+
+
     return word;
 }
 fn start_with(txt: &String, search: &String) -> bool {
