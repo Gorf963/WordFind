@@ -1,5 +1,5 @@
-pub(crate) const SEARCH_X: usize = 100;
-pub(crate) const SEARCH_Y: usize = 100;
+pub(crate) const SEARCH_X: usize = 2000;
+pub(crate) const SEARCH_Y: usize = 2000;
 
 mod pause;
 mod loader;
